@@ -22,8 +22,6 @@ permalink: /1.12/projectcontour/v1/httpProxy/
   * [`fn withGeneration(generation)`](#fn-metadatawithgeneration)
   * [`fn withLabels(labels)`](#fn-metadatawithlabels)
   * [`fn withLabelsMixin(labels)`](#fn-metadatawithlabelsmixin)
-  * [`fn withManagedFields(managedFields)`](#fn-metadatawithmanagedfields)
-  * [`fn withManagedFieldsMixin(managedFields)`](#fn-metadatawithmanagedfieldsmixin)
   * [`fn withName(name)`](#fn-metadatawithname)
   * [`fn withNamespace(namespace)`](#fn-metadatawithnamespace)
   * [`fn withOwnerReferences(ownerReferences)`](#fn-metadatawithownerreferences)
@@ -36,6 +34,123 @@ permalink: /1.12/projectcontour/v1/httpProxy/
   * [`fn withIncludesMixin(includes)`](#fn-specwithincludesmixin)
   * [`fn withRoutes(routes)`](#fn-specwithroutes)
   * [`fn withRoutesMixin(routes)`](#fn-specwithroutesmixin)
+  * [`obj spec.includes`](#obj-specincludes)
+    * [`fn withConditions(conditions)`](#fn-specincludeswithconditions)
+    * [`fn withConditionsMixin(conditions)`](#fn-specincludeswithconditionsmixin)
+    * [`fn withName(name)`](#fn-specincludeswithname)
+    * [`fn withNamespace(namespace)`](#fn-specincludeswithnamespace)
+    * [`obj spec.includes.conditions`](#obj-specincludesconditions)
+      * [`fn withPrefix(prefix)`](#fn-specincludesconditionswithprefix)
+      * [`obj spec.includes.conditions.header`](#obj-specincludesconditionsheader)
+        * [`fn withContains(contains)`](#fn-specincludesconditionsheaderwithcontains)
+        * [`fn withExact(exact)`](#fn-specincludesconditionsheaderwithexact)
+        * [`fn withName(name)`](#fn-specincludesconditionsheaderwithname)
+        * [`fn withNotcontains(notcontains)`](#fn-specincludesconditionsheaderwithnotcontains)
+        * [`fn withNotexact(notexact)`](#fn-specincludesconditionsheaderwithnotexact)
+        * [`fn withPresent(present)`](#fn-specincludesconditionsheaderwithpresent)
+  * [`obj spec.routes`](#obj-specroutes)
+    * [`fn withConditions(conditions)`](#fn-specrouteswithconditions)
+    * [`fn withConditionsMixin(conditions)`](#fn-specrouteswithconditionsmixin)
+    * [`fn withEnableWebsockets(enableWebsockets)`](#fn-specrouteswithenablewebsockets)
+    * [`fn withPermitInsecure(permitInsecure)`](#fn-specrouteswithpermitinsecure)
+    * [`fn withServices(services)`](#fn-specrouteswithservices)
+    * [`fn withServicesMixin(services)`](#fn-specrouteswithservicesmixin)
+    * [`obj spec.routes.authPolicy`](#obj-specroutesauthpolicy)
+      * [`fn withContext(context)`](#fn-specroutesauthpolicywithcontext)
+      * [`fn withContextMixin(context)`](#fn-specroutesauthpolicywithcontextmixin)
+      * [`fn withDisabled(disabled)`](#fn-specroutesauthpolicywithdisabled)
+    * [`obj spec.routes.conditions`](#obj-specroutesconditions)
+      * [`fn withPrefix(prefix)`](#fn-specroutesconditionswithprefix)
+      * [`obj spec.routes.conditions.header`](#obj-specroutesconditionsheader)
+        * [`fn withContains(contains)`](#fn-specroutesconditionsheaderwithcontains)
+        * [`fn withExact(exact)`](#fn-specroutesconditionsheaderwithexact)
+        * [`fn withName(name)`](#fn-specroutesconditionsheaderwithname)
+        * [`fn withNotcontains(notcontains)`](#fn-specroutesconditionsheaderwithnotcontains)
+        * [`fn withNotexact(notexact)`](#fn-specroutesconditionsheaderwithnotexact)
+        * [`fn withPresent(present)`](#fn-specroutesconditionsheaderwithpresent)
+    * [`obj spec.routes.healthCheckPolicy`](#obj-specrouteshealthcheckpolicy)
+      * [`fn withHealthyThresholdCount(healthyThresholdCount)`](#fn-specrouteshealthcheckpolicywithhealthythresholdcount)
+      * [`fn withHost(host)`](#fn-specrouteshealthcheckpolicywithhost)
+      * [`fn withIntervalSeconds(intervalSeconds)`](#fn-specrouteshealthcheckpolicywithintervalseconds)
+      * [`fn withPath(path)`](#fn-specrouteshealthcheckpolicywithpath)
+      * [`fn withTimeoutSeconds(timeoutSeconds)`](#fn-specrouteshealthcheckpolicywithtimeoutseconds)
+      * [`fn withUnhealthyThresholdCount(unhealthyThresholdCount)`](#fn-specrouteshealthcheckpolicywithunhealthythresholdcount)
+    * [`obj spec.routes.loadBalancerPolicy`](#obj-specroutesloadbalancerpolicy)
+      * [`fn withRequestHashPolicies(requestHashPolicies)`](#fn-specroutesloadbalancerpolicywithrequesthashpolicies)
+      * [`fn withRequestHashPoliciesMixin(requestHashPolicies)`](#fn-specroutesloadbalancerpolicywithrequesthashpoliciesmixin)
+      * [`fn withStrategy(strategy)`](#fn-specroutesloadbalancerpolicywithstrategy)
+      * [`obj spec.routes.loadBalancerPolicy.requestHashPolicies`](#obj-specroutesloadbalancerpolicyrequesthashpolicies)
+        * [`fn withTerminal(terminal)`](#fn-specroutesloadbalancerpolicyrequesthashpolicieswithterminal)
+        * [`obj spec.routes.loadBalancerPolicy.requestHashPolicies.headerHashOptions`](#obj-specroutesloadbalancerpolicyrequesthashpoliciesheaderhashoptions)
+          * [`fn withHeaderName(headerName)`](#fn-specroutesloadbalancerpolicyrequesthashpoliciesheaderhashoptionswithheadername)
+    * [`obj spec.routes.pathRewritePolicy`](#obj-specroutespathrewritepolicy)
+      * [`fn withReplacePrefix(replacePrefix)`](#fn-specroutespathrewritepolicywithreplaceprefix)
+      * [`fn withReplacePrefixMixin(replacePrefix)`](#fn-specroutespathrewritepolicywithreplaceprefixmixin)
+      * [`obj spec.routes.pathRewritePolicy.replacePrefix`](#obj-specroutespathrewritepolicyreplaceprefix)
+        * [`fn withPrefix(prefix)`](#fn-specroutespathrewritepolicyreplaceprefixwithprefix)
+        * [`fn withReplacement(replacement)`](#fn-specroutespathrewritepolicyreplaceprefixwithreplacement)
+    * [`obj spec.routes.rateLimitPolicy`](#obj-specroutesratelimitpolicy)
+      * [`obj spec.routes.rateLimitPolicy.local`](#obj-specroutesratelimitpolicylocal)
+        * [`fn withBurst(burst)`](#fn-specroutesratelimitpolicylocalwithburst)
+        * [`fn withRequests(requests)`](#fn-specroutesratelimitpolicylocalwithrequests)
+        * [`fn withResponseHeadersToAdd(responseHeadersToAdd)`](#fn-specroutesratelimitpolicylocalwithresponseheaderstoadd)
+        * [`fn withResponseHeadersToAddMixin(responseHeadersToAdd)`](#fn-specroutesratelimitpolicylocalwithresponseheaderstoaddmixin)
+        * [`fn withResponseStatusCode(responseStatusCode)`](#fn-specroutesratelimitpolicylocalwithresponsestatuscode)
+        * [`fn withUnit(unit)`](#fn-specroutesratelimitpolicylocalwithunit)
+        * [`obj spec.routes.rateLimitPolicy.local.responseHeadersToAdd`](#obj-specroutesratelimitpolicylocalresponseheaderstoadd)
+          * [`fn withName(name)`](#fn-specroutesratelimitpolicylocalresponseheaderstoaddwithname)
+          * [`fn withValue(value)`](#fn-specroutesratelimitpolicylocalresponseheaderstoaddwithvalue)
+    * [`obj spec.routes.requestHeadersPolicy`](#obj-specroutesrequestheaderspolicy)
+      * [`fn withRemove(remove)`](#fn-specroutesrequestheaderspolicywithremove)
+      * [`fn withRemoveMixin(remove)`](#fn-specroutesrequestheaderspolicywithremovemixin)
+      * [`fn withSet(set)`](#fn-specroutesrequestheaderspolicywithset)
+      * [`fn withSetMixin(set)`](#fn-specroutesrequestheaderspolicywithsetmixin)
+      * [`obj spec.routes.requestHeadersPolicy.set`](#obj-specroutesrequestheaderspolicyset)
+        * [`fn withName(name)`](#fn-specroutesrequestheaderspolicysetwithname)
+        * [`fn withValue(value)`](#fn-specroutesrequestheaderspolicysetwithvalue)
+    * [`obj spec.routes.responseHeadersPolicy`](#obj-specroutesresponseheaderspolicy)
+      * [`fn withRemove(remove)`](#fn-specroutesresponseheaderspolicywithremove)
+      * [`fn withRemoveMixin(remove)`](#fn-specroutesresponseheaderspolicywithremovemixin)
+      * [`fn withSet(set)`](#fn-specroutesresponseheaderspolicywithset)
+      * [`fn withSetMixin(set)`](#fn-specroutesresponseheaderspolicywithsetmixin)
+      * [`obj spec.routes.responseHeadersPolicy.set`](#obj-specroutesresponseheaderspolicyset)
+        * [`fn withName(name)`](#fn-specroutesresponseheaderspolicysetwithname)
+        * [`fn withValue(value)`](#fn-specroutesresponseheaderspolicysetwithvalue)
+    * [`obj spec.routes.retryPolicy`](#obj-specroutesretrypolicy)
+      * [`fn withCount(count)`](#fn-specroutesretrypolicywithcount)
+      * [`fn withPerTryTimeout(perTryTimeout)`](#fn-specroutesretrypolicywithpertrytimeout)
+      * [`fn withRetriableStatusCodes(retriableStatusCodes)`](#fn-specroutesretrypolicywithretriablestatuscodes)
+      * [`fn withRetriableStatusCodesMixin(retriableStatusCodes)`](#fn-specroutesretrypolicywithretriablestatuscodesmixin)
+      * [`fn withRetryOn(retryOn)`](#fn-specroutesretrypolicywithretryon)
+      * [`fn withRetryOnMixin(retryOn)`](#fn-specroutesretrypolicywithretryonmixin)
+    * [`obj spec.routes.services`](#obj-specroutesservices)
+      * [`fn withMirror(mirror)`](#fn-specroutesserviceswithmirror)
+      * [`fn withName(name)`](#fn-specroutesserviceswithname)
+      * [`fn withPort(port)`](#fn-specroutesserviceswithport)
+      * [`fn withProtocol(protocol)`](#fn-specroutesserviceswithprotocol)
+      * [`fn withWeight(weight)`](#fn-specroutesserviceswithweight)
+      * [`obj spec.routes.services.requestHeadersPolicy`](#obj-specroutesservicesrequestheaderspolicy)
+        * [`fn withRemove(remove)`](#fn-specroutesservicesrequestheaderspolicywithremove)
+        * [`fn withRemoveMixin(remove)`](#fn-specroutesservicesrequestheaderspolicywithremovemixin)
+        * [`fn withSet(set)`](#fn-specroutesservicesrequestheaderspolicywithset)
+        * [`fn withSetMixin(set)`](#fn-specroutesservicesrequestheaderspolicywithsetmixin)
+        * [`obj spec.routes.services.requestHeadersPolicy.set`](#obj-specroutesservicesrequestheaderspolicyset)
+          * [`fn withName(name)`](#fn-specroutesservicesrequestheaderspolicysetwithname)
+          * [`fn withValue(value)`](#fn-specroutesservicesrequestheaderspolicysetwithvalue)
+      * [`obj spec.routes.services.responseHeadersPolicy`](#obj-specroutesservicesresponseheaderspolicy)
+        * [`fn withRemove(remove)`](#fn-specroutesservicesresponseheaderspolicywithremove)
+        * [`fn withRemoveMixin(remove)`](#fn-specroutesservicesresponseheaderspolicywithremovemixin)
+        * [`fn withSet(set)`](#fn-specroutesservicesresponseheaderspolicywithset)
+        * [`fn withSetMixin(set)`](#fn-specroutesservicesresponseheaderspolicywithsetmixin)
+        * [`obj spec.routes.services.responseHeadersPolicy.set`](#obj-specroutesservicesresponseheaderspolicyset)
+          * [`fn withName(name)`](#fn-specroutesservicesresponseheaderspolicysetwithname)
+          * [`fn withValue(value)`](#fn-specroutesservicesresponseheaderspolicysetwithvalue)
+      * [`obj spec.routes.services.validation`](#obj-specroutesservicesvalidation)
+        * [`fn withCaSecret(caSecret)`](#fn-specroutesservicesvalidationwithcasecret)
+        * [`fn withSubjectName(subjectName)`](#fn-specroutesservicesvalidationwithsubjectname)
+    * [`obj spec.routes.timeoutPolicy`](#obj-specroutestimeoutpolicy)
+      * [`fn withIdle(idle)`](#fn-specroutestimeoutpolicywithidle)
+      * [`fn withResponse(response)`](#fn-specroutestimeoutpolicywithresponse)
   * [`obj spec.tcpproxy`](#obj-spectcpproxy)
     * [`fn withServices(services)`](#fn-spectcpproxywithservices)
     * [`fn withServicesMixin(services)`](#fn-spectcpproxywithservicesmixin)
@@ -54,6 +169,35 @@ permalink: /1.12/projectcontour/v1/httpProxy/
       * [`fn withRequestHashPolicies(requestHashPolicies)`](#fn-spectcpproxyloadbalancerpolicywithrequesthashpolicies)
       * [`fn withRequestHashPoliciesMixin(requestHashPolicies)`](#fn-spectcpproxyloadbalancerpolicywithrequesthashpoliciesmixin)
       * [`fn withStrategy(strategy)`](#fn-spectcpproxyloadbalancerpolicywithstrategy)
+      * [`obj spec.tcpproxy.loadBalancerPolicy.requestHashPolicies`](#obj-spectcpproxyloadbalancerpolicyrequesthashpolicies)
+        * [`fn withTerminal(terminal)`](#fn-spectcpproxyloadbalancerpolicyrequesthashpolicieswithterminal)
+        * [`obj spec.tcpproxy.loadBalancerPolicy.requestHashPolicies.headerHashOptions`](#obj-spectcpproxyloadbalancerpolicyrequesthashpoliciesheaderhashoptions)
+          * [`fn withHeaderName(headerName)`](#fn-spectcpproxyloadbalancerpolicyrequesthashpoliciesheaderhashoptionswithheadername)
+    * [`obj spec.tcpproxy.services`](#obj-spectcpproxyservices)
+      * [`fn withMirror(mirror)`](#fn-spectcpproxyserviceswithmirror)
+      * [`fn withName(name)`](#fn-spectcpproxyserviceswithname)
+      * [`fn withPort(port)`](#fn-spectcpproxyserviceswithport)
+      * [`fn withProtocol(protocol)`](#fn-spectcpproxyserviceswithprotocol)
+      * [`fn withWeight(weight)`](#fn-spectcpproxyserviceswithweight)
+      * [`obj spec.tcpproxy.services.requestHeadersPolicy`](#obj-spectcpproxyservicesrequestheaderspolicy)
+        * [`fn withRemove(remove)`](#fn-spectcpproxyservicesrequestheaderspolicywithremove)
+        * [`fn withRemoveMixin(remove)`](#fn-spectcpproxyservicesrequestheaderspolicywithremovemixin)
+        * [`fn withSet(set)`](#fn-spectcpproxyservicesrequestheaderspolicywithset)
+        * [`fn withSetMixin(set)`](#fn-spectcpproxyservicesrequestheaderspolicywithsetmixin)
+        * [`obj spec.tcpproxy.services.requestHeadersPolicy.set`](#obj-spectcpproxyservicesrequestheaderspolicyset)
+          * [`fn withName(name)`](#fn-spectcpproxyservicesrequestheaderspolicysetwithname)
+          * [`fn withValue(value)`](#fn-spectcpproxyservicesrequestheaderspolicysetwithvalue)
+      * [`obj spec.tcpproxy.services.responseHeadersPolicy`](#obj-spectcpproxyservicesresponseheaderspolicy)
+        * [`fn withRemove(remove)`](#fn-spectcpproxyservicesresponseheaderspolicywithremove)
+        * [`fn withRemoveMixin(remove)`](#fn-spectcpproxyservicesresponseheaderspolicywithremovemixin)
+        * [`fn withSet(set)`](#fn-spectcpproxyservicesresponseheaderspolicywithset)
+        * [`fn withSetMixin(set)`](#fn-spectcpproxyservicesresponseheaderspolicywithsetmixin)
+        * [`obj spec.tcpproxy.services.responseHeadersPolicy.set`](#obj-spectcpproxyservicesresponseheaderspolicyset)
+          * [`fn withName(name)`](#fn-spectcpproxyservicesresponseheaderspolicysetwithname)
+          * [`fn withValue(value)`](#fn-spectcpproxyservicesresponseheaderspolicysetwithvalue)
+      * [`obj spec.tcpproxy.services.validation`](#obj-spectcpproxyservicesvalidation)
+        * [`fn withCaSecret(caSecret)`](#fn-spectcpproxyservicesvalidationwithcasecret)
+        * [`fn withSubjectName(subjectName)`](#fn-spectcpproxyservicesvalidationwithsubjectname)
   * [`obj spec.virtualhost`](#obj-specvirtualhost)
     * [`fn withFqdn(fqdn)`](#fn-specvirtualhostwithfqdn)
     * [`obj spec.virtualhost.authorization`](#obj-specvirtualhostauthorization)
@@ -86,6 +230,9 @@ permalink: /1.12/projectcontour/v1/httpProxy/
         * [`fn withResponseHeadersToAddMixin(responseHeadersToAdd)`](#fn-specvirtualhostratelimitpolicylocalwithresponseheaderstoaddmixin)
         * [`fn withResponseStatusCode(responseStatusCode)`](#fn-specvirtualhostratelimitpolicylocalwithresponsestatuscode)
         * [`fn withUnit(unit)`](#fn-specvirtualhostratelimitpolicylocalwithunit)
+        * [`obj spec.virtualhost.rateLimitPolicy.local.responseHeadersToAdd`](#obj-specvirtualhostratelimitpolicylocalresponseheaderstoadd)
+          * [`fn withName(name)`](#fn-specvirtualhostratelimitpolicylocalresponseheaderstoaddwithname)
+          * [`fn withValue(value)`](#fn-specvirtualhostratelimitpolicylocalresponseheaderstoaddwithvalue)
     * [`obj spec.virtualhost.tls`](#obj-specvirtualhosttls)
       * [`fn withEnableFallbackCertificate(enableFallbackCertificate)`](#fn-specvirtualhosttlswithenablefallbackcertificate)
       * [`fn withMinimumProtocolVersion(minimumProtocolVersion)`](#fn-specvirtualhosttlswithminimumprotocolversion)
@@ -210,24 +357,6 @@ withLabelsMixin(labels)
 
 **Note:** This function appends passed data to existing values
 
-### fn metadata.withManagedFields
-
-```ts
-withManagedFields(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
-
-### fn metadata.withManagedFieldsMixin
-
-```ts
-withManagedFieldsMixin(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
-
-**Note:** This function appends passed data to existing values
-
 ### fn metadata.withName
 
 ```ts
@@ -325,6 +454,864 @@ withRoutesMixin(routes)
 "Routes are the ingress routes. If TCPProxy is present, Routes is ignored."
 
 **Note:** This function appends passed data to existing values
+
+## obj spec.includes
+
+"Includes allow for specific routing configuration to be included from another HTTPProxy, possibly in another namespace."
+
+### fn spec.includes.withConditions
+
+```ts
+withConditions(conditions)
+```
+
+"Conditions are a set of rules that are applied to included HTTPProxies. In effect, they are added onto the Conditions of included HTTPProxy Route structs. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the include invalid."
+
+### fn spec.includes.withConditionsMixin
+
+```ts
+withConditionsMixin(conditions)
+```
+
+"Conditions are a set of rules that are applied to included HTTPProxies. In effect, they are added onto the Conditions of included HTTPProxy Route structs. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the include invalid."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.includes.withName
+
+```ts
+withName(name)
+```
+
+"Name of the HTTPProxy"
+
+### fn spec.includes.withNamespace
+
+```ts
+withNamespace(namespace)
+```
+
+"Namespace of the HTTPProxy to include. Defaults to the current namespace if not supplied."
+
+## obj spec.includes.conditions
+
+"Conditions are a set of rules that are applied to included HTTPProxies. In effect, they are added onto the Conditions of included HTTPProxy Route structs. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the include invalid."
+
+### fn spec.includes.conditions.withPrefix
+
+```ts
+withPrefix(prefix)
+```
+
+"Prefix defines a prefix match for a request."
+
+## obj spec.includes.conditions.header
+
+"Header specifies the header condition to match."
+
+### fn spec.includes.conditions.header.withContains
+
+```ts
+withContains(contains)
+```
+
+"Contains specifies a substring that must be present in the header value."
+
+### fn spec.includes.conditions.header.withExact
+
+```ts
+withExact(exact)
+```
+
+"Exact specifies a string that the header value must be equal to."
+
+### fn spec.includes.conditions.header.withName
+
+```ts
+withName(name)
+```
+
+"Name is the name of the header to match against. Name is required. Header names are case insensitive."
+
+### fn spec.includes.conditions.header.withNotcontains
+
+```ts
+withNotcontains(notcontains)
+```
+
+"NotContains specifies a substring that must not be present in the header value."
+
+### fn spec.includes.conditions.header.withNotexact
+
+```ts
+withNotexact(notexact)
+```
+
+"NoExact specifies a string that the header value must not be equal to. The condition is true if the header has any other value."
+
+### fn spec.includes.conditions.header.withPresent
+
+```ts
+withPresent(present)
+```
+
+"Present specifies that condition is true when the named header is present, regardless of its value. Note that setting Present to false does not make the condition true if the named header is absent."
+
+## obj spec.routes
+
+"Routes are the ingress routes. If TCPProxy is present, Routes is ignored."
+
+### fn spec.routes.withConditions
+
+```ts
+withConditions(conditions)
+```
+
+"Conditions are a set of rules that are applied to a Route. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the route invalid."
+
+### fn spec.routes.withConditionsMixin
+
+```ts
+withConditionsMixin(conditions)
+```
+
+"Conditions are a set of rules that are applied to a Route. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the route invalid."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.withEnableWebsockets
+
+```ts
+withEnableWebsockets(enableWebsockets)
+```
+
+"Enables websocket support for the route."
+
+### fn spec.routes.withPermitInsecure
+
+```ts
+withPermitInsecure(permitInsecure)
+```
+
+"Allow this path to respond to insecure requests over HTTP which are normally not permitted when a `virtualhost.tls` block is present."
+
+### fn spec.routes.withServices
+
+```ts
+withServices(services)
+```
+
+"Services are the services to proxy traffic."
+
+### fn spec.routes.withServicesMixin
+
+```ts
+withServicesMixin(services)
+```
+
+"Services are the services to proxy traffic."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.authPolicy
+
+"AuthPolicy updates the authorization policy that was set on the root HTTPProxy object for client requests that match this route."
+
+### fn spec.routes.authPolicy.withContext
+
+```ts
+withContext(context)
+```
+
+"Context is a set of key/value pairs that are sent to the authentication server in the check request. If a context is provided at an enclosing scope, the entries are merged such that the inner scope overrides matching keys from the outer scope."
+
+### fn spec.routes.authPolicy.withContextMixin
+
+```ts
+withContextMixin(context)
+```
+
+"Context is a set of key/value pairs that are sent to the authentication server in the check request. If a context is provided at an enclosing scope, the entries are merged such that the inner scope overrides matching keys from the outer scope."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.authPolicy.withDisabled
+
+```ts
+withDisabled(disabled)
+```
+
+"When true, this field disables client request authentication for the scope of the policy."
+
+## obj spec.routes.conditions
+
+"Conditions are a set of rules that are applied to a Route. When applied, they are merged using AND, with one exception: There can be only one Prefix MatchCondition per Conditions slice. More than one Prefix, or contradictory Conditions, will make the route invalid."
+
+### fn spec.routes.conditions.withPrefix
+
+```ts
+withPrefix(prefix)
+```
+
+"Prefix defines a prefix match for a request."
+
+## obj spec.routes.conditions.header
+
+"Header specifies the header condition to match."
+
+### fn spec.routes.conditions.header.withContains
+
+```ts
+withContains(contains)
+```
+
+"Contains specifies a substring that must be present in the header value."
+
+### fn spec.routes.conditions.header.withExact
+
+```ts
+withExact(exact)
+```
+
+"Exact specifies a string that the header value must be equal to."
+
+### fn spec.routes.conditions.header.withName
+
+```ts
+withName(name)
+```
+
+"Name is the name of the header to match against. Name is required. Header names are case insensitive."
+
+### fn spec.routes.conditions.header.withNotcontains
+
+```ts
+withNotcontains(notcontains)
+```
+
+"NotContains specifies a substring that must not be present in the header value."
+
+### fn spec.routes.conditions.header.withNotexact
+
+```ts
+withNotexact(notexact)
+```
+
+"NoExact specifies a string that the header value must not be equal to. The condition is true if the header has any other value."
+
+### fn spec.routes.conditions.header.withPresent
+
+```ts
+withPresent(present)
+```
+
+"Present specifies that condition is true when the named header is present, regardless of its value. Note that setting Present to false does not make the condition true if the named header is absent."
+
+## obj spec.routes.healthCheckPolicy
+
+"The health check policy for this route."
+
+### fn spec.routes.healthCheckPolicy.withHealthyThresholdCount
+
+```ts
+withHealthyThresholdCount(healthyThresholdCount)
+```
+
+"The number of healthy health checks required before a host is marked healthy"
+
+### fn spec.routes.healthCheckPolicy.withHost
+
+```ts
+withHost(host)
+```
+
+"The value of the host header in the HTTP health check request. If left empty (default value), the name \"contour-envoy-healthcheck\" will be used."
+
+### fn spec.routes.healthCheckPolicy.withIntervalSeconds
+
+```ts
+withIntervalSeconds(intervalSeconds)
+```
+
+"The interval (seconds) between health checks"
+
+### fn spec.routes.healthCheckPolicy.withPath
+
+```ts
+withPath(path)
+```
+
+"HTTP endpoint used to perform health checks on upstream service"
+
+### fn spec.routes.healthCheckPolicy.withTimeoutSeconds
+
+```ts
+withTimeoutSeconds(timeoutSeconds)
+```
+
+"The time to wait (seconds) for a health check response"
+
+### fn spec.routes.healthCheckPolicy.withUnhealthyThresholdCount
+
+```ts
+withUnhealthyThresholdCount(unhealthyThresholdCount)
+```
+
+"The number of unhealthy health checks required before a host is marked unhealthy"
+
+## obj spec.routes.loadBalancerPolicy
+
+"The load balancing policy for this route."
+
+### fn spec.routes.loadBalancerPolicy.withRequestHashPolicies
+
+```ts
+withRequestHashPolicies(requestHashPolicies)
+```
+
+"RequestHashPolicies contains a list of hash policies to apply when the `RequestHash` load balancing strategy is chosen. If an element of the supplied list of hash policies is invalid, it will be ignored. If the list of hash policies is empty after validation, the load balancing strategy will fall back the the default `RoundRobin`."
+
+### fn spec.routes.loadBalancerPolicy.withRequestHashPoliciesMixin
+
+```ts
+withRequestHashPoliciesMixin(requestHashPolicies)
+```
+
+"RequestHashPolicies contains a list of hash policies to apply when the `RequestHash` load balancing strategy is chosen. If an element of the supplied list of hash policies is invalid, it will be ignored. If the list of hash policies is empty after validation, the load balancing strategy will fall back the the default `RoundRobin`."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.loadBalancerPolicy.withStrategy
+
+```ts
+withStrategy(strategy)
+```
+
+"Strategy specifies the policy used to balance requests across the pool of backend pods. Valid policy names are `Random`, `RoundRobin`, `WeightedLeastRequest`, `Cookie`, and `RequestHash`. If an unknown strategy name is specified or no policy is supplied, the default `RoundRobin` policy is used."
+
+## obj spec.routes.loadBalancerPolicy.requestHashPolicies
+
+"RequestHashPolicies contains a list of hash policies to apply when the `RequestHash` load balancing strategy is chosen. If an element of the supplied list of hash policies is invalid, it will be ignored. If the list of hash policies is empty after validation, the load balancing strategy will fall back the the default `RoundRobin`."
+
+### fn spec.routes.loadBalancerPolicy.requestHashPolicies.withTerminal
+
+```ts
+withTerminal(terminal)
+```
+
+"Terminal is a flag that allows for short-circuiting computing of a hash for a given request. If set to true, and the request attribute specified in the attribute hash options is present, no further hash policies will be used to calculate a hash for the request."
+
+## obj spec.routes.loadBalancerPolicy.requestHashPolicies.headerHashOptions
+
+"HeaderHashOptions should be set when request header hash based load balancing is desired. It must be the only hash option field set, otherwise this request hash policy object will be ignored."
+
+### fn spec.routes.loadBalancerPolicy.requestHashPolicies.headerHashOptions.withHeaderName
+
+```ts
+withHeaderName(headerName)
+```
+
+"HeaderName is the name of the HTTP request header that will be used to calculate the hash key. If the header specified is not present on a request, no hash will be produced."
+
+## obj spec.routes.pathRewritePolicy
+
+"The policy for rewriting the path of the request URL after the request has been routed to a Service."
+
+### fn spec.routes.pathRewritePolicy.withReplacePrefix
+
+```ts
+withReplacePrefix(replacePrefix)
+```
+
+"ReplacePrefix describes how the path prefix should be replaced."
+
+### fn spec.routes.pathRewritePolicy.withReplacePrefixMixin
+
+```ts
+withReplacePrefixMixin(replacePrefix)
+```
+
+"ReplacePrefix describes how the path prefix should be replaced."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.pathRewritePolicy.replacePrefix
+
+"ReplacePrefix describes how the path prefix should be replaced."
+
+### fn spec.routes.pathRewritePolicy.replacePrefix.withPrefix
+
+```ts
+withPrefix(prefix)
+```
+
+"Prefix specifies the URL path prefix to be replaced. \n If Prefix is specified, it must exactly match the MatchCondition prefix that is rendered by the chain of including HTTPProxies and only that path prefix will be replaced by Replacement. This allows HTTPProxies that are included through multiple roots to only replace specific path prefixes, leaving others unmodified. \n If Prefix is not specified, all routing prefixes rendered by the include chain will be replaced."
+
+### fn spec.routes.pathRewritePolicy.replacePrefix.withReplacement
+
+```ts
+withReplacement(replacement)
+```
+
+"Replacement is the string that the routing path prefix will be replaced with. This must not be empty."
+
+## obj spec.routes.rateLimitPolicy
+
+"The policy for rate limiting on the route."
+
+## obj spec.routes.rateLimitPolicy.local
+
+"Local defines local rate limiting parameters, i.e. parameters for rate limiting that occurs within each Envoy pod as requests are handled."
+
+### fn spec.routes.rateLimitPolicy.local.withBurst
+
+```ts
+withBurst(burst)
+```
+
+"Burst defines the number of requests above the requests per unit that should be allowed within a short period of time."
+
+### fn spec.routes.rateLimitPolicy.local.withRequests
+
+```ts
+withRequests(requests)
+```
+
+"Requests defines how many requests per unit of time should be allowed before rate limiting occurs."
+
+### fn spec.routes.rateLimitPolicy.local.withResponseHeadersToAdd
+
+```ts
+withResponseHeadersToAdd(responseHeadersToAdd)
+```
+
+"ResponseHeadersToAdd is an optional list of response headers to set when a request is rate-limited."
+
+### fn spec.routes.rateLimitPolicy.local.withResponseHeadersToAddMixin
+
+```ts
+withResponseHeadersToAddMixin(responseHeadersToAdd)
+```
+
+"ResponseHeadersToAdd is an optional list of response headers to set when a request is rate-limited."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.rateLimitPolicy.local.withResponseStatusCode
+
+```ts
+withResponseStatusCode(responseStatusCode)
+```
+
+"ResponseStatusCode is the HTTP status code to use for responses to rate-limited requests. Codes must be in the 400-599 range (inclusive). If not specified, the Envoy default of 429 (Too Many Requests) is used."
+
+### fn spec.routes.rateLimitPolicy.local.withUnit
+
+```ts
+withUnit(unit)
+```
+
+"Unit defines the period of time within which requests over the limit will be rate limited. Valid values are \"second\", \"minute\" and \"hour\"."
+
+## obj spec.routes.rateLimitPolicy.local.responseHeadersToAdd
+
+"ResponseHeadersToAdd is an optional list of response headers to set when a request is rate-limited."
+
+### fn spec.routes.rateLimitPolicy.local.responseHeadersToAdd.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.routes.rateLimitPolicy.local.responseHeadersToAdd.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.routes.requestHeadersPolicy
+
+"The policy for managing request headers during proxying."
+
+### fn spec.routes.requestHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.routes.requestHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.requestHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.requestHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.requestHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.requestHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.routes.requestHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.routes.responseHeadersPolicy
+
+"The policy for managing response headers during proxying. Rewriting the 'Host' header is not supported."
+
+### fn spec.routes.responseHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.routes.responseHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.responseHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.responseHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.responseHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.responseHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.routes.responseHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.routes.retryPolicy
+
+"The retry policy for this route."
+
+### fn spec.routes.retryPolicy.withCount
+
+```ts
+withCount(count)
+```
+
+"NumRetries is maximum allowed number of retries. If not supplied, the number of retries is one."
+
+### fn spec.routes.retryPolicy.withPerTryTimeout
+
+```ts
+withPerTryTimeout(perTryTimeout)
+```
+
+"PerTryTimeout specifies the timeout per retry attempt. Ignored if NumRetries is not supplied."
+
+### fn spec.routes.retryPolicy.withRetriableStatusCodes
+
+```ts
+withRetriableStatusCodes(retriableStatusCodes)
+```
+
+"RetriableStatusCodes specifies the HTTP status codes that should be retried. \n This field is only respected when you include `retriable-status-codes` in the `RetryOn` field."
+
+### fn spec.routes.retryPolicy.withRetriableStatusCodesMixin
+
+```ts
+withRetriableStatusCodesMixin(retriableStatusCodes)
+```
+
+"RetriableStatusCodes specifies the HTTP status codes that should be retried. \n This field is only respected when you include `retriable-status-codes` in the `RetryOn` field."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.retryPolicy.withRetryOn
+
+```ts
+withRetryOn(retryOn)
+```
+
+"RetryOn specifies the conditions on which to retry a request. \n Supported [HTTP conditions](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on): \n - `5xx` - `gateway-error` - `reset` - `connect-failure` - `retriable-4xx` - `refused-stream` - `retriable-status-codes` - `retriable-headers` \n Supported [gRPC conditions](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on): \n - `cancelled` - `deadline-exceeded` - `internal` - `resource-exhausted` - `unavailable`"
+
+### fn spec.routes.retryPolicy.withRetryOnMixin
+
+```ts
+withRetryOnMixin(retryOn)
+```
+
+"RetryOn specifies the conditions on which to retry a request. \n Supported [HTTP conditions](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on): \n - `5xx` - `gateway-error` - `reset` - `connect-failure` - `retriable-4xx` - `refused-stream` - `retriable-status-codes` - `retriable-headers` \n Supported [gRPC conditions](https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-grpc-on): \n - `cancelled` - `deadline-exceeded` - `internal` - `resource-exhausted` - `unavailable`"
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.services
+
+"Services are the services to proxy traffic."
+
+### fn spec.routes.services.withMirror
+
+```ts
+withMirror(mirror)
+```
+
+"If Mirror is true the Service will receive a read only mirror of the traffic for this route."
+
+### fn spec.routes.services.withName
+
+```ts
+withName(name)
+```
+
+"Name is the name of Kubernetes service to proxy traffic. Names defined here will be used to look up corresponding endpoints which contain the ips to route."
+
+### fn spec.routes.services.withPort
+
+```ts
+withPort(port)
+```
+
+"Port (defined as Integer) to proxy traffic to since a service can have multiple defined."
+
+### fn spec.routes.services.withProtocol
+
+```ts
+withProtocol(protocol)
+```
+
+"Protocol may be used to specify (or override) the protocol used to reach this Service. Values may be tls, h2, h2c. If omitted, protocol-selection falls back on Service annotations."
+
+### fn spec.routes.services.withWeight
+
+```ts
+withWeight(weight)
+```
+
+"Weight defines percentage of traffic to balance traffic"
+
+## obj spec.routes.services.requestHeadersPolicy
+
+"The policy for managing request headers during proxying. Rewriting the 'Host' header is not supported."
+
+### fn spec.routes.services.requestHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.routes.services.requestHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.services.requestHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.services.requestHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.services.requestHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.services.requestHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.routes.services.requestHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.routes.services.responseHeadersPolicy
+
+"The policy for managing response headers during proxying. Rewriting the 'Host' header is not supported."
+
+### fn spec.routes.services.responseHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.routes.services.responseHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.routes.services.responseHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.services.responseHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.routes.services.responseHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.routes.services.responseHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.routes.services.responseHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.routes.services.validation
+
+"UpstreamValidation defines how to verify the backend service's certificate"
+
+### fn spec.routes.services.validation.withCaSecret
+
+```ts
+withCaSecret(caSecret)
+```
+
+"Name of the Kubernetes secret be used to validate the certificate presented by the backend"
+
+### fn spec.routes.services.validation.withSubjectName
+
+```ts
+withSubjectName(subjectName)
+```
+
+"Key which is expected to be present in the 'subjectAltName' of the presented certificate"
+
+## obj spec.routes.timeoutPolicy
+
+"The timeout policy for this route."
+
+### fn spec.routes.timeoutPolicy.withIdle
+
+```ts
+withIdle(idle)
+```
+
+"Timeout after which, if there are no active requests for this route, the connection between Envoy and the backend or Envoy and the external client will be closed. If not specified, there is no per-route idle timeout, though a connection manager-wide stream_idle_timeout default of 5m still applies."
+
+### fn spec.routes.timeoutPolicy.withResponse
+
+```ts
+withResponse(response)
+```
+
+"Timeout for receiving a response from the server after processing a request from client. If not supplied, Envoy's default value of 15s applies."
 
 ## obj spec.tcpproxy
 
@@ -453,6 +1440,214 @@ withStrategy(strategy)
 ```
 
 "Strategy specifies the policy used to balance requests across the pool of backend pods. Valid policy names are `Random`, `RoundRobin`, `WeightedLeastRequest`, `Cookie`, and `RequestHash`. If an unknown strategy name is specified or no policy is supplied, the default `RoundRobin` policy is used."
+
+## obj spec.tcpproxy.loadBalancerPolicy.requestHashPolicies
+
+"RequestHashPolicies contains a list of hash policies to apply when the `RequestHash` load balancing strategy is chosen. If an element of the supplied list of hash policies is invalid, it will be ignored. If the list of hash policies is empty after validation, the load balancing strategy will fall back the the default `RoundRobin`."
+
+### fn spec.tcpproxy.loadBalancerPolicy.requestHashPolicies.withTerminal
+
+```ts
+withTerminal(terminal)
+```
+
+"Terminal is a flag that allows for short-circuiting computing of a hash for a given request. If set to true, and the request attribute specified in the attribute hash options is present, no further hash policies will be used to calculate a hash for the request."
+
+## obj spec.tcpproxy.loadBalancerPolicy.requestHashPolicies.headerHashOptions
+
+"HeaderHashOptions should be set when request header hash based load balancing is desired. It must be the only hash option field set, otherwise this request hash policy object will be ignored."
+
+### fn spec.tcpproxy.loadBalancerPolicy.requestHashPolicies.headerHashOptions.withHeaderName
+
+```ts
+withHeaderName(headerName)
+```
+
+"HeaderName is the name of the HTTP request header that will be used to calculate the hash key. If the header specified is not present on a request, no hash will be produced."
+
+## obj spec.tcpproxy.services
+
+"Services are the services to proxy traffic"
+
+### fn spec.tcpproxy.services.withMirror
+
+```ts
+withMirror(mirror)
+```
+
+"If Mirror is true the Service will receive a read only mirror of the traffic for this route."
+
+### fn spec.tcpproxy.services.withName
+
+```ts
+withName(name)
+```
+
+"Name is the name of Kubernetes service to proxy traffic. Names defined here will be used to look up corresponding endpoints which contain the ips to route."
+
+### fn spec.tcpproxy.services.withPort
+
+```ts
+withPort(port)
+```
+
+"Port (defined as Integer) to proxy traffic to since a service can have multiple defined."
+
+### fn spec.tcpproxy.services.withProtocol
+
+```ts
+withProtocol(protocol)
+```
+
+"Protocol may be used to specify (or override) the protocol used to reach this Service. Values may be tls, h2, h2c. If omitted, protocol-selection falls back on Service annotations."
+
+### fn spec.tcpproxy.services.withWeight
+
+```ts
+withWeight(weight)
+```
+
+"Weight defines percentage of traffic to balance traffic"
+
+## obj spec.tcpproxy.services.requestHeadersPolicy
+
+"The policy for managing request headers during proxying. Rewriting the 'Host' header is not supported."
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.tcpproxy.services.requestHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.tcpproxy.services.requestHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.tcpproxy.services.responseHeadersPolicy
+
+"The policy for managing response headers during proxying. Rewriting the 'Host' header is not supported."
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.withRemove
+
+```ts
+withRemove(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.withRemoveMixin
+
+```ts
+withRemoveMixin(remove)
+```
+
+"Remove specifies a list of HTTP header names to remove."
+
+**Note:** This function appends passed data to existing values
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.withSet
+
+```ts
+withSet(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.withSetMixin
+
+```ts
+withSetMixin(set)
+```
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+**Note:** This function appends passed data to existing values
+
+## obj spec.tcpproxy.services.responseHeadersPolicy.set
+
+"Set specifies a list of HTTP header values that will be set in the HTTP header. If the header does not exist it will be added, otherwise it will be overwritten with the new value."
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.set.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.tcpproxy.services.responseHeadersPolicy.set.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
+
+## obj spec.tcpproxy.services.validation
+
+"UpstreamValidation defines how to verify the backend service's certificate"
+
+### fn spec.tcpproxy.services.validation.withCaSecret
+
+```ts
+withCaSecret(caSecret)
+```
+
+"Name of the Kubernetes secret be used to validate the certificate presented by the backend"
+
+### fn spec.tcpproxy.services.validation.withSubjectName
+
+```ts
+withSubjectName(subjectName)
+```
+
+"Key which is expected to be present in the 'subjectAltName' of the presented certificate"
 
 ## obj spec.virtualhost
 
@@ -693,6 +1888,26 @@ withUnit(unit)
 ```
 
 "Unit defines the period of time within which requests over the limit will be rate limited. Valid values are \"second\", \"minute\" and \"hour\"."
+
+## obj spec.virtualhost.rateLimitPolicy.local.responseHeadersToAdd
+
+"ResponseHeadersToAdd is an optional list of response headers to set when a request is rate-limited."
+
+### fn spec.virtualhost.rateLimitPolicy.local.responseHeadersToAdd.withName
+
+```ts
+withName(name)
+```
+
+"Name represents a key of a header"
+
+### fn spec.virtualhost.rateLimitPolicy.local.responseHeadersToAdd.withValue
+
+```ts
+withValue(value)
+```
+
+"Value represents the value of a header specified by a key"
 
 ## obj spec.virtualhost.tls
 

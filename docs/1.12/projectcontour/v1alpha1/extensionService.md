@@ -22,8 +22,6 @@ permalink: /1.12/projectcontour/v1alpha1/extensionService/
   * [`fn withGeneration(generation)`](#fn-metadatawithgeneration)
   * [`fn withLabels(labels)`](#fn-metadatawithlabels)
   * [`fn withLabelsMixin(labels)`](#fn-metadatawithlabelsmixin)
-  * [`fn withManagedFields(managedFields)`](#fn-metadatawithmanagedfields)
-  * [`fn withManagedFieldsMixin(managedFields)`](#fn-metadatawithmanagedfieldsmixin)
   * [`fn withName(name)`](#fn-metadatawithname)
   * [`fn withNamespace(namespace)`](#fn-metadatawithnamespace)
   * [`fn withOwnerReferences(ownerReferences)`](#fn-metadatawithownerreferences)
@@ -40,6 +38,14 @@ permalink: /1.12/projectcontour/v1alpha1/extensionService/
     * [`fn withRequestHashPolicies(requestHashPolicies)`](#fn-specloadbalancerpolicywithrequesthashpolicies)
     * [`fn withRequestHashPoliciesMixin(requestHashPolicies)`](#fn-specloadbalancerpolicywithrequesthashpoliciesmixin)
     * [`fn withStrategy(strategy)`](#fn-specloadbalancerpolicywithstrategy)
+    * [`obj spec.loadBalancerPolicy.requestHashPolicies`](#obj-specloadbalancerpolicyrequesthashpolicies)
+      * [`fn withTerminal(terminal)`](#fn-specloadbalancerpolicyrequesthashpolicieswithterminal)
+      * [`obj spec.loadBalancerPolicy.requestHashPolicies.headerHashOptions`](#obj-specloadbalancerpolicyrequesthashpoliciesheaderhashoptions)
+        * [`fn withHeaderName(headerName)`](#fn-specloadbalancerpolicyrequesthashpoliciesheaderhashoptionswithheadername)
+  * [`obj spec.services`](#obj-specservices)
+    * [`fn withName(name)`](#fn-specserviceswithname)
+    * [`fn withPort(port)`](#fn-specserviceswithport)
+    * [`fn withWeight(weight)`](#fn-specserviceswithweight)
   * [`obj spec.timeoutPolicy`](#obj-spectimeoutpolicy)
     * [`fn withIdle(idle)`](#fn-spectimeoutpolicywithidle)
     * [`fn withResponse(response)`](#fn-spectimeoutpolicywithresponse)
@@ -160,24 +166,6 @@ withLabelsMixin(labels)
 ```
 
 "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: http://kubernetes.io/docs/user-guide/labels"
-
-**Note:** This function appends passed data to existing values
-
-### fn metadata.withManagedFields
-
-```ts
-withManagedFields(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
-
-### fn metadata.withManagedFieldsMixin
-
-```ts
-withManagedFieldsMixin(managedFields)
-```
-
-"ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object."
 
 **Note:** This function appends passed data to existing values
 
@@ -306,6 +294,58 @@ withStrategy(strategy)
 ```
 
 "Strategy specifies the policy used to balance requests across the pool of backend pods. Valid policy names are `Random`, `RoundRobin`, `WeightedLeastRequest`, `Cookie`, and `RequestHash`. If an unknown strategy name is specified or no policy is supplied, the default `RoundRobin` policy is used."
+
+## obj spec.loadBalancerPolicy.requestHashPolicies
+
+"RequestHashPolicies contains a list of hash policies to apply when the `RequestHash` load balancing strategy is chosen. If an element of the supplied list of hash policies is invalid, it will be ignored. If the list of hash policies is empty after validation, the load balancing strategy will fall back the the default `RoundRobin`."
+
+### fn spec.loadBalancerPolicy.requestHashPolicies.withTerminal
+
+```ts
+withTerminal(terminal)
+```
+
+"Terminal is a flag that allows for short-circuiting computing of a hash for a given request. If set to true, and the request attribute specified in the attribute hash options is present, no further hash policies will be used to calculate a hash for the request."
+
+## obj spec.loadBalancerPolicy.requestHashPolicies.headerHashOptions
+
+"HeaderHashOptions should be set when request header hash based load balancing is desired. It must be the only hash option field set, otherwise this request hash policy object will be ignored."
+
+### fn spec.loadBalancerPolicy.requestHashPolicies.headerHashOptions.withHeaderName
+
+```ts
+withHeaderName(headerName)
+```
+
+"HeaderName is the name of the HTTP request header that will be used to calculate the hash key. If the header specified is not present on a request, no hash will be produced."
+
+## obj spec.services
+
+"Services specifies the set of Kubernetes Service resources that receive GRPC extension API requests. If no weights are specified for any of the entries in this array, traffic will be spread evenly across all the services. Otherwise, traffic is balanced proportionally to the Weight field in each entry."
+
+### fn spec.services.withName
+
+```ts
+withName(name)
+```
+
+"Name is the name of Kubernetes service that will accept service traffic."
+
+### fn spec.services.withPort
+
+```ts
+withPort(port)
+```
+
+"Port (defined as Integer) to proxy traffic to since a service can have multiple defined."
+
+### fn spec.services.withWeight
+
+```ts
+withWeight(weight)
+```
+
+"Weight defines proportion of traffic to balance to the Kubernetes Service."
 
 ## obj spec.timeoutPolicy
 
