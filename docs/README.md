@@ -2,6 +2,10 @@
 
 This library is generated with [`k8s`](https://github.com/jsonnet-libs/k8s).
 
+- [1.28](1.28/README.md)
+- [1.27](1.27/README.md)
+- [1.26](1.26/README.md)
+- [1.25](1.25/README.md)
 - [1.24](1.24/README.md)
 - [1.23](1.23/README.md)
 - [1.22](1.22/README.md)
